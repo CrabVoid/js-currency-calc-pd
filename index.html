@@ -49,9 +49,15 @@ let amount = parseFloat(amountInput.value);
 
 if (isNaN(amount) || amount <= 0) {
 result.innerHTML = "Ievadi derīgu daudzumu";
+} else {
+    let convertedAmount = converter(fromCurrency, toCurrency, amount);
+    result.innerHTML = `${amount}  ${fromCurrency} = ${convertedAmount}  ${toCurrency}`;
+}
 }
 
+function converter(fromCurrency, toCurrency, amount) {
 let convertedAmount;
+
 switch (fromCurrency) {
 case "USD":
 convertedAmount =
@@ -68,10 +74,9 @@ break;
 
 default:
 break;
-}
-
-result.innerHTML = `${amount}  ${fromCurrency} = ${convertedAmount}  ${toCurrency}`;
-}
+};
+return convertedAmount;
+};
 
 btn.addEventListener("click", handleClick);
 </script>
