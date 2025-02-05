@@ -32,6 +32,9 @@
 <button id="convert-btn">Konvertēt</button>
 <br>
 <p id="result"></p>
+<br>
+<h2>Vēsture:</h2>
+    <ul id="history"></ul>
 </div>
 
 <script>
@@ -40,7 +43,9 @@ const fromCurrencyInput = document.getElementById("from-currency");
 const btn = document.getElementById("convert-btn");
 const amountInput = document.getElementById("amount");
 const result = document.getElementById("result");
+const historicalList = document.getElementById("history");
 
+let history = [];
 
 function handleClick() {
 let fromCurrency = fromCurrencyInput.value;
@@ -51,7 +56,9 @@ if (isNaN(amount) || amount <= 0) {
 result.innerHTML = "Ievadi derīgu daudzumu";
 } else {
     let convertedAmount = converter(fromCurrency, toCurrency, amount);
-    result.innerHTML = `${amount}  ${fromCurrency} = ${convertedAmount}  ${toCurrency}`;
+    let conversionResult = `${amount}  ${fromCurrency} = ${convertedAmount}  ${toCurrency}`;
+    result.innerHTML = conversionResult
+    updateHistory(conversionResult);
 }
 }
 
@@ -77,6 +84,24 @@ break;
 };
 return convertedAmount;
 };
+
+function updateHistory(conversion) {
+    if (history.length >= 5) {
+        let newHistory = [];
+        for (let i = 1; i < history.length; i++) {
+        newHistory.push(history[i]);
+    }
+    history = newHistory
+}
+history.push(conversion);
+
+    historicalList.innerHTML = ""; 
+    for (let i = 0; i < history.length; i++) {
+    let listItem = document.createElement("li"); 
+    listItem.textContent = history[i]; 
+    historicalList.appendChild(listItem);
+}
+}
 
 btn.addEventListener("click", handleClick);
 </script>
