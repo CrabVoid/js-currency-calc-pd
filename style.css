@@ -1,0 +1,9 @@
+body {
+    background-color: bisque;
+}
+
+div {
+    box-sizing: border-box;
+    border:1px solid black;
+    width: 300px;
+}
