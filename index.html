@@ -45,9 +45,9 @@ const result = document.getElementById("result");
 function handleClick() {
 let fromCurrency = fromCurrencyInput.value;
 let toCurrency = toCurrencyInput.value;
-let amount = parseFloat(amountInput);
+let amount = parseFloat(amountInput.value);
 
-if (isNaN(amount) || amount.value <= 0) {
+if (isNaN(amount) || amount <= 0) {
 result.innerHTML = "Ievadi derīgu daudzumu";
 }
 
