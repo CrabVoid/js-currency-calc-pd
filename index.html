@@ -40,14 +40,14 @@ const fromCurrencyInput = document.getElementById("from-currency");
 const btn = document.getElementById("convert-btn");
 const amountInput = document.getElementById("amount");
 const result = document.getElementById("result");
-btn.addEventListener("click", handleClick);
+
 
 function handleClick() {
 let fromCurrency = fromCurrencyInput.value;
 let toCurrency = toCurrencyInput.value;
 let amount = parseFloat(amountInput);
 
-if (isNaN(amount) || amount <= 0) {
+if (isNaN(amount) || amount.value <= 0) {
 result.innerHTML = "Ievadi derīgu daudzumu";
 }
 
@@ -70,7 +70,7 @@ default:
 break;
 }
 
-result = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+result = `${amount}  ${fromCurrency} = ${convertedAmount}  ${toCurrency}`;
 }
 
 btn.addEventListener("click", handleClick);
